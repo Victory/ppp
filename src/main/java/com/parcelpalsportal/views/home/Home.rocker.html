@@ -1,0 +1,121 @@
+@import com.parcelpalsportal.views.layout.FullPage
+@import com.parcelpalsportal.viewmodels.*
+
+@args (HomeViewModel vm)
+
+@FullPage.template("Parcel Pals Portal", vm) -> {
+<div class="splash-container">
+    <div class="splash">
+        <h1 class="splash-head">Parcel Pals Portal</h1>
+        <p class="splash-subhead">
+            Exchange student made packages full or cultural items with classrooms around the world.
+        </p>
+        <p>
+            <a href="http://purecss.io" class="pure-button pure-button-primary">Get Started</a>
+        </p>
+    </div>
+</div>
+
+<div class="content-wrapper">
+    <div class="content">
+        <h2 class="content-head is-center">FAQ</h2>
+
+        <div class="pure-g">
+            <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
+
+                <h3 class="content-subhead">
+                    <i class="fa fa-rocket"></i>
+                    Who should join?
+                </h3>
+                <p>
+                    Classrooms across the globe.
+                </p>
+            </div>
+            <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
+                <h3 class="content-subhead">
+                    <i class="fa fa-mobile"></i>
+                    Are exchanges running now?
+                </h3>
+                <p>
+                    We are currently running pilot exchanges.
+                </p>
+            </div>
+            <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
+                <h3 class="content-subhead">
+                    <i class="fa fa-th-large"></i>
+                    How can I stay informed?
+                </h3>
+                <p>
+                    Fill out your name and email address below to get informed about updates.
+                </p>
+            </div>
+            <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
+                <h3 class="content-subhead">
+                    <i class="fa fa-check-square-o"></i>
+                    How much will it cost?
+                </h3>
+                <p>
+                    There will be a small fee associated with being in the network.
+                    The particulars will be coming soon.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="ribbon l-box-lrg pure-g">
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-3-5">
+
+            <h2 class="content-head content-head-ribbon">What you get</h2>
+
+            <p>
+                We help teachers and students exchange physical packages that express their daily lives and cultures with others across the globe.
+                Teachers will signup, fill out a profile, look through other schools profiles and find schools that they match with.
+                We will guide the teachers through the process of the exchange via an online interface (e.g. package guidelines, target deadlines, expected delivery, gotchas, communication in general).
+            </p>
+        </div>
+    </div>
+
+    <div class="content" id="join">
+        <h2 class="content-head is-center">Contact Form</h2>
+
+        <div class="pure-g">
+            <div class="l-box-lrg pure-u-1 pure-u-md-2-5">
+                <form class="pure-form pure-form-stacked" method="POST" action="@route().submitInterest()"">
+                    <fieldset>
+
+                        <label for="name">Your Name</label>
+                        <input id="name" type="text"  name="name" placeholder="Your Name">
+
+                        <label for="email">Your Email</label>
+                        <input id="email" type="email" name="email" placeholder="Your Email">
+
+                        <label for="comments">comment (optional)</label>
+                        <textarea name="comments" id="comments"></textarea>
+
+                        <label for="agreement" class="with-checkbox">
+                            <input type="checkbox" id="agreement" name="tos" value="true" required/>
+                                Check to state you have read and agree to our <a target="_blank" href="/privacy.txt">
+                                </a> and wish to join our mailing list.
+                        </label>
+
+                        <button type="submit" class="pure-button">Sign Up</button>
+                    </fieldset>
+                </form>
+            </div>
+
+            <div class="l-box-lrg pure-u-1 pure-u-md-3-5">
+                <h4>Keep in Touch</h4>
+                <p>
+                    Fill out the contact form to stay informed or leave comments about the parcel pals portal.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer l-box is-center">
+        Copyright ParcelPalsPortal.com 2017
+    </div>
+</div>
+
+}
