@@ -1,6 +1,6 @@
 package com.parcelpalsportal.service;
 
-import com.parcelpalsportal.morphs.AbstractLog;
+import org.dfhu.sparkingrocks.morphs.AbstractLog;
 import org.eclipse.jetty.util.BlockingArrayQueue;
 import org.mongodb.morphia.Datastore;
 import org.slf4j.Logger;
@@ -36,7 +36,7 @@ public class AnalyticsStore {
     /**
      * Wait for all threads to finish
      * @param timeoutInSeconds - how long to wait before exception
-     * @throws InterruptedException
+     * @throws InterruptedException - if timeout is reached
      */
     public void awaitTermination(long timeoutInSeconds) throws InterruptedException {
         pool.awaitTermination(timeoutInSeconds, TimeUnit.SECONDS);

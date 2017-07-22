@@ -3,7 +3,7 @@ package com.parcelpalsportal.templateengine;
 import com.fizzed.rocker.runtime.DefaultRockerModel;
 import com.google.gson.Gson;
 import com.parcelpalsportal.RouteManager;
-import com.parcelpalsportal.viewmodels.ViewModel;
+import org.dfhu.sparkingrocks.viewmodels.ViewModel;
 
 public abstract class BaseModel extends DefaultRockerModel {
 
@@ -25,7 +25,7 @@ public abstract class BaseModel extends DefaultRockerModel {
    * Escapes an html attribute
    *
    * @param attr - string to escape
-   * @return
+   * @return attribute to be used inside of quotes
    */
   public static String attr(String attr) {
     if (attr.contains("\"")) {
@@ -46,11 +46,11 @@ public abstract class BaseModel extends DefaultRockerModel {
     if (key == null || val == null) {
       return "";
     }
-    StringBuilder sb = new StringBuilder();
-    sb.append("<script>");
-    sb.append("window.vic = window.vic || {};");
-    sb.append("window.vic." + key + " = " + gson.toJson(val) + ";");
-    sb.append("</script>");
-    return sb.toString();
+
+    String script = "<script>" +
+      "window.vic = window.vic || {};" +
+      "window.vic." + key + " = " + gson.toJson(val) + ";" +
+      "</script>";
+    return script;
   }
 }

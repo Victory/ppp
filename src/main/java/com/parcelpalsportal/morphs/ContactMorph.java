@@ -1,5 +1,6 @@
 package com.parcelpalsportal.morphs;
 
+import org.dfhu.sparkingrocks.morphs.AbstractLog;
 import org.mongodb.morphia.annotations.Entity;
 
 @Entity("contact")

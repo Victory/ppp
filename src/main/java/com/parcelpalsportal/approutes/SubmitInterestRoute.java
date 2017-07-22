@@ -1,13 +1,13 @@
 package com.parcelpalsportal.approutes;
 
 import com.parcelpalsportal.RouteManager;
-import com.parcelpalsportal.VicSession;
 import com.parcelpalsportal.morphs.ContactMorph;
-import com.parcelpalsportal.routeing.JsonResponse;
-import com.parcelpalsportal.routeing.JsonRoute;
-import com.parcelpalsportal.routeing.Route;
 import com.parcelpalsportal.service.AnalyticsStore;
-import com.parcelpalsportal.util.StandardRequestLog;
+import org.dfhu.sparkingrocks.routing.JsonResponse;
+import org.dfhu.sparkingrocks.routing.JsonRoute;
+import org.dfhu.sparkingrocks.routing.Route;
+import org.dfhu.sparkingrocks.session.VicSession;
+import org.dfhu.sparkingrocks.util.StandardRequestLog;
 import spark.Request;
 import spark.Response;
 
@@ -26,7 +26,7 @@ public class SubmitInterestRoute extends JsonRoute implements Route {
 
   @Override
   public METHOD getMethod() {
-    return METHOD.POST;
+    return Route.METHOD.POST;
   }
 
   @Override

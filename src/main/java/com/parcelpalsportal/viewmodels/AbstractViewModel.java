@@ -1,6 +1,7 @@
 package com.parcelpalsportal.viewmodels;
 
-import com.parcelpalsportal.VicSession;
+
+import org.dfhu.sparkingrocks.session.VicSession;
 
 public class AbstractViewModel {
   public AbstractViewModel(VicSession vicSession) {
