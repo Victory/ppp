@@ -1,5 +1,7 @@
 @import org.dfhu.sparkingrocks.viewmodels.ViewModel
 
+@import com.parcelpalsportal.views.partials.GoogleAnalytics
+
 @args(String title, ViewModel vm, RockerBody body)
 
 @raw(docType())
@@ -49,5 +51,6 @@
 
 @body
 
+@GoogleAnalytics.template(getAnalyticsTrackingId())
 </body>
 </html>

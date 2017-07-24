@@ -9,6 +9,9 @@ public abstract class BaseModel extends DefaultRockerModel {
 
   private static final Gson gson = new Gson();
 
+  private static String analyticsTrackingId;
+
+
   public ViewModel vm() {
     return null;
   }
@@ -21,6 +24,13 @@ public abstract class BaseModel extends DefaultRockerModel {
     return RouteManager.getInstance();
   }
 
+  public static String getAnalyticsTrackingId() {
+    return analyticsTrackingId;
+  }
+
+  public static void setAnalyticsTrackingId(String analyticsTrackingId) {
+    BaseModel.analyticsTrackingId = analyticsTrackingId;
+  }
   /**
    * Escapes an html attribute
    *

@@ -1,11 +1,14 @@
 package com.parcelpalsportal;
 
 import com.fizzed.rocker.runtime.RockerRuntime;
-import com.parcelpalsportal.model.DataProvider;
+import org.dfhu.sparkingrocks.config.PropertiesConfig;
+import org.dfhu.sparkingrocks.config.ReadSystemProperties;
+import org.dfhu.sparkingrocks.model.DataProvider;
 import org.mongodb.morphia.Datastore;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -13,15 +16,10 @@ import static spark.Spark.staticFiles;
 
 public class ParcelPalsPortal {
   public static void main(String[] args) {
-    try {
-      System.getProperties().load(new FileInputStream("config.properties"));
-    } catch (IOException e) {
-      e.printStackTrace();
-      throw new RuntimeException("Could not find config file config.properties");
-    }
-    boolean dev = System.getProperty("dev").equals("true");
 
-    if (dev) {
+    PropertiesConfig config = ReadSystemProperties.read();
+
+    if (config.isDevelopment()) {
       // DEBUGING
       RockerRuntime.getInstance().setReloading(true);
       String publicDir = System.getProperty("user.dir") + "/src/main/resources/public";
@@ -32,14 +30,16 @@ public class ParcelPalsPortal {
       RockerRuntime.getInstance().setReloading(false);
     }
 
-    Datastore datastore = DataProvider.get("com.parcelpalsportal.morphs");
+    Datastore datastore = DataProvider
+      .create(Arrays.asList("com.parcelpalsportal.morphs"), config);
+
 
     // log queries in dev mode
-    if (dev) {
+    if (config.isDevelopment()) {
       Logger logger = Logger.getLogger("class org.mongodb.morphia.DatastoreImpl");
       logger.setLevel(Level.FINER);
     }
 
-    Application.init(datastore);
+    Application.init(datastore, config);
   }
 }
